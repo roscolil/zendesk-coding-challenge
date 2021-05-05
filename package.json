@@ -11,5 +11,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "esm": "^3.2.25",
+    "minimist": "^1.2.5"
+  }
 }
