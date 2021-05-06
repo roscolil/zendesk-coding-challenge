@@ -1,16 +1,16 @@
 {
   "name": "zendesk-search",
-  "version": "1.0.0",
-  "description": "Command line application to search json data and return results",
+  "version": "Version 1.0.0",
+  "description": "Command line application to query json data and return search results",
   "main": "index.js",
   "bin": {
-    "search": "./index.js"
+    "zendesk": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "By Ross Lillis for Zendesk",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.1",

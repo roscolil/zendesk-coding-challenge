@@ -1,4 +1,6 @@
 export async function version() {
-  const packagejson = require('../package.json')
-  console.log(packagejson.version);
+  const packageJSON = require('../package.json')
+  console.log(packageJSON.version);
+  console.log(packageJSON.description);
+  console.log(packageJSON.author);
 }
