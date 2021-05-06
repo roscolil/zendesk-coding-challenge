@@ -1,4 +1,5 @@
 let fs = require('fs')
+import chalk from 'chalk'
 const path = require('path')
 const dataFolder = path.join(__dirname, '../data/')
 
@@ -15,8 +16,8 @@ const readDataDirectory = () => {
     if (err) throw err
     files.forEach(file => {
       fs.readFile(dataFolder + file, (err, data) => {
-        console.log('-------------------------------');
-        console.log('Search ' + capitalize(file.split('.').slice(0, -1).join('.')) + ' with:\n'); // TODO capitalize file names
+        console.log(chalk`{blue.bold -------------------------------}`)
+        console.log(chalk`{yellow.bold Search ${capitalize(file.split('.').slice(0, -1).join('.'))} with:}\n`)
         const obj = JSON.parse(data)
         for (const key in obj[0]) {
           console.log(key)
