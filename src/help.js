@@ -2,14 +2,15 @@ import chalk from 'chalk'
 
 const menus = {
   main: `
+  ${chalk.blueBright('--------------------------------------------------------------------\n')}
   ${chalk.blueBright('Zendesk CLI search application')}
   ${chalk.blueBright('Query the JSON data by using the following command line format below')}
   ${chalk.blueBright('--------------------------------------------------------------------\n')}
-  ${chalk.greenBright('zendesk [command] <search string>\n')} 
-  ${chalk.greenBright('E.g. $ zendesk search megacorp\n')} 
+  ${chalk.greenBright('zendesk [command]\n')} 
+  ${chalk.greenBright('e.g. $ zendesk fields\n')} 
   ${chalk.redBright('Commands:')}
-  ${chalk.redBright('search')} ...................... to search JSON data
   ${chalk.redBright('fields')} ...................... to view a list of searchable fields
+  ${chalk.redBright('search')} ...................... to search JSON data
   ${chalk.redBright('version')} ..................... to show app version
   `,
   // TODO may need a quit option in menu otherwise delete

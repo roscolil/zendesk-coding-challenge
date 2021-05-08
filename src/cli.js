@@ -2,7 +2,6 @@ import minimist from 'minimist'
 import { help } from './help'
 import { version } from './version'
 import { search } from './search'
-// import { quit } from './quit'
 import { viewFields } from './viewFields'
 
 export async function cli(argsArray) {
@@ -33,10 +32,6 @@ export async function cli(argsArray) {
     case 'fields':
       viewFields(args);
       break;
-
-    // case 'quit':
-    //   quit(args);
-    //   break;
 
     default:
       console.error(`"${cmd}" is not a valid command!`);
