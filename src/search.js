@@ -89,7 +89,6 @@ const readFileExtractData = (file) => {
     objArr.filter(obj => {
       for (const [key, value] of Object.entries(obj)) {
         if (key == fieldName && value == searchQuery) {
-          tableData = obj
           for (const [key, value] of Object.entries(obj)) {
             if (Array.isArray(value)) {     // If any of object keys is an array, loop through and display in table
               value.forEach((e) => {
@@ -97,6 +96,7 @@ const readFileExtractData = (file) => {
               })
             }
           }
+          tableData = obj
           if (Object.entries(tableData).length >= 1) {
             displayData(tableData)
           } else {

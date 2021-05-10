@@ -24,10 +24,10 @@ const readDataDirectory = () => {
         for (const key in obj[0]) {
           console.log(key)
         }
-        quitMessage()
       })
     })
   })
+  quitMessage()
 }
 
 const capitalize = (string) => {
