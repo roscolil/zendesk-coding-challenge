@@ -44,7 +44,7 @@ This is a command line application built as part of the Zendesk Coding Challenge
 
 ## Demo
 
-blah blah -- video here
+See a demo [here](https://vimeo.com/547309000)
 
 ---
 
@@ -80,7 +80,7 @@ blah blah -- video here
 ### Version 2.0
 
 - Better UX/UI
-- Build at a web app
+- Build as a web app
 - Validate each of the search criteria against chosen file
 - Capacity to view fields at any point in the program
 - Fuzzy search
