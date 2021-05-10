@@ -1,4 +1,4 @@
-let fs = require('fs')
+const fs = require('fs')
 import chalk from 'chalk'
 import Table from 'cli-table3'
 import { quitMessage } from './quit'
@@ -16,7 +16,7 @@ const rl = readline.createInterface({
 let fileName
 let fieldName
 let searchQuery
-
+let tableData
 
 // ------------------- Main search function ------------------- //
 export async function search() {
@@ -35,7 +35,7 @@ export async function search() {
 
 // Store user inputs and validate entry before pushing to arrray
 const storeSelectedFile = (input) => {
-  let str = input.toLowerCase()
+  const str = input.toLowerCase()
   if (str == 'u' || str == 't' || str == 'o') {
     fileName = str.trim()
   } else {
@@ -45,79 +45,88 @@ const storeSelectedFile = (input) => {
 }
 
 const storeSelectedField = (field) => {
-  // let str = field.toLowerCase()
-  // Load fields from chosen file to validate? 'This field does not exist in the the file you've selected. You may want to run zendesk fields to confirm and try again'
-  if (field == '') {
+  const str = field.toLowerCase()
+  // Load fields from chosen file to validate? 'This field does not exist in the the file you've selected. You may want to run zendesk fields to confirm and try again' Or, show fields when file selected
+  if (str == '') {
     console.log(chalk`{red.bold Please enter a field name}`);
-    search() // TODO or add question again here.
+    search()
   } else {
-    fieldName = field.trim()
+    fieldName = str.trim()
   }
 }
 
 const storeSearchQuery = (string) => {
-  // let str = string.toLowerCase()
-  if (string == '') {
+  const str = string.toLowerCase()
+  if (str == '') {
     console.log(chalk`{red.bold Please enter a search query}`)
     search()
   } else {
-    searchQuery = string.trim()
+    searchQuery = str.trim()
   }
 }
 
 const searchData = () => {
-  console.log(chalk`{blue.bold -----------------------------------------}`)
-  console.log(chalk`{blue.bold Search results for ${fieldName} in ${fileName} file:\n}`)
   if (fileName == 'u') { // Only read file selected
     fileName = 'Users'
-    fs.readFile(userData, (err, data) => {
-      if (err) throw err
-      const objArr = JSON.parse(data)
-      const result = objArr.filter(obj => {
-        for (const [key, value] of Object.entries(obj)) {
-          if (key == fieldName && value == searchQuery) {
-            return obj
-          }
-        }
-      })
-      console.log(result)
-      quitMessage()
-    })
-  } else if (fileName == 't') {
+    resultsHeader(fieldName, searchQuery, fileName)
+    readFileExtractData(userData)
+  }
+  else if (fileName == 't') {
     fileName = 'Tickets'
-    fs.readFile(ticketData, (err, data) => {
-      if (err) throw err
-      const objArr = JSON.parse(data)
-      const result = objArr.filter(obj => {
-        for (const [key, value] of Object.entries(obj)) {
-          if (key == fieldName && value == searchQuery) {
-            return obj
-          }
-        }
-      })
-      console.log(result)
-      quitMessage()
-    })
+    resultsHeader(fieldName, searchQuery, fileName)
+    readFileExtractData(ticketData)
   } else if (fileName == 'o') {
     fileName = 'Organizations'
-    fs.readFile(organizationData, (err, data) => {
-      if (err) throw err
-      const objArr = JSON.parse(data)
-      const result = objArr.filter(obj => {
-        for (const [key, value] of Object.entries(obj)) {
-          if (key == fieldName && value == searchQuery) {
-            return obj
-          }
-        }
-      })
-      console.log(result)
-      quitMessage()
-    })
+    resultsHeader(fieldName, searchQuery, fileName)
+    readFileExtractData(organizationData)
   }
 }
 
+const readFileExtractData = (file) => {
+  fs.readFile(file, (err, data) => {
+    if (err) throw err
+    const objArr = JSON.parse(data)
+    objArr.filter(obj => {
+      for (const [key, value] of Object.entries(obj)) {
+        if (key == fieldName && value == searchQuery) {
+          tableData = obj
+          for (const [key, value] of Object.entries(obj)) {
+            if (Array.isArray(value)) {     // If any of object keys is an array, loop through and display in table
+              value.forEach((e) => {
+                obj[key] += e
+              })
+            }
+          }
+          if (Object.entries(tableData).length >= 1) {
+            displayData(tableData)
+          } else {
+            console.log('There are no results for this search...');
+            quitMessage()
+          }
+        }
+      }
+    })
+    quitMessage()
+  })
+}
 
+const resultsHeader = (field, query, file) => {
+  console.log(chalk`{blue.bold -----------------------------------------}`)
+  console.log(chalk`{blue.bold Search results for ${field}: '${query}' in the ${file} file:\n}`)
+}
 
-// TODO cli-table3 function here
-
-// TODO would try/catch work ok for any of these?
+const displayData = (result) => {
+  const table = new Table({
+    head: ['Field', 'Value'],
+    colWidths: [25, 55],
+    style: { 'padding': 0 },
+    wordWrap: true
+  })
+  // If multiple results, press key to continue
+  for (const properties of Object.entries(result)) {
+    table.push(
+      properties
+    )
+  }
+  console.log(table.toString());
+}
