@@ -1,5 +1,6 @@
-let fs = require('fs')
+const fs = require('fs')
 import chalk from 'chalk'
+import { quitMessage } from './quit'
 const path = require('path')
 const dataFolder = path.join(__dirname, '../data/')
 
@@ -10,7 +11,7 @@ export async function viewFields() {
     console.log(error);
   }
 }
-// TODO selection to display fields at any time
+
 const readDataDirectory = () => {
   fs.readdir(dataFolder, (err, files) => {
     if (err) throw err
@@ -23,6 +24,7 @@ const readDataDirectory = () => {
         for (const key in obj[0]) {
           console.log(key)
         }
+        quitMessage()
       })
     })
   })
