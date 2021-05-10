@@ -20,7 +20,9 @@
 
 This is a command line application built as part of the Zendesk Coding Challenge following the overview and selection criteria provided
 
----
+##### At a glance
+
+## ![](http://github.com/roscolil/zendesk-coding-challenge/assets/app.jpg?raw=true)
 
 ## Environment & Technologies Used
 
