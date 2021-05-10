@@ -22,7 +22,7 @@ This is a command line application built as part of the Zendesk Coding Challenge
 
 ##### At a glance
 
-![](https://github.com/roscolil/zendesk-coding-challenge/blob/master/assets/app.jpg)
+<img src="https://github.com/roscolil/zendesk-coding-challenge/blob/master/assets/app.jpg" width="700" height="500">
 
 ## Environment & Technologies Used
 
