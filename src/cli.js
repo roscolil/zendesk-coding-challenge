@@ -1,5 +1,6 @@
 import minimist from 'minimist'
 import { help } from './help'
+import { quitMessage } from './quit'
 import { version } from './version'
 import { search } from './search'
 import { viewFields } from './viewFields'
@@ -19,6 +20,7 @@ export async function cli(argsArray) {
   switch (cmd) {
     case 'version':
       version(args);
+      quitMessage()
       break;
 
     case 'help':
@@ -31,6 +33,7 @@ export async function cli(argsArray) {
 
     case 'fields':
       viewFields(args);
+      quitMessage()
       break;
 
     default:
