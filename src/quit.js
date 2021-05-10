@@ -8,13 +8,15 @@ const rl = readline.createInterface({
   terminal: false
 })
 
-export async function quitMessage() {   // TODO put this in correct place
+export async function quitMessage() {
   rl.question(chalk`\n{blue.bold Type 'quit' to exit or 'more' to do another search}\n`, (input) => {
     if (input == 'quit') {
-      closeApp()    // TODO check this
+      closeApp()
     } else if (input == 'more') {
       console.clear()
       search()
+    } else {
+      quitMessage()
     }
   })
 }
@@ -24,8 +26,6 @@ const closeApp = () => {
     console.log(chalk`\n{blue.bold Bye Bye..}`)
     process.exit(0)
   })
+  console.clear()
   rl.close()
-  setInterval(() => {
-    console.clear()
-  }, 3000);
 }
