@@ -1,4 +1,11 @@
 import chalk from 'chalk'
+const readline = require('readline')
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+})
 
 const menus = {
   main: `
@@ -13,10 +20,8 @@ const menus = {
   ${chalk.redBright('search')} ...................... to search JSON data
   ${chalk.redBright('version')} ..................... to show app version
   `,
-  // TODO may need a quit option in menu otherwise delete
   search: `search()`,
   viewfields: `viewFields()`
-  // TODO add search help function here??
 }
 
 export async function help(args) {
@@ -24,4 +29,5 @@ export async function help(args) {
     ? args._[1]
     : args._[0]
   console.log(menus[subCmd] || menus.main)
+  rl.close()
 }
