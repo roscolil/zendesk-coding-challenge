@@ -1,10 +1,3 @@
-<!-- TODO
-          format each file
-          add tests or remove module note
-          validation messages (pre-load/cache keys/values) for no results and number of results
-          fuzzy search
--->
-
 ## Zendesk Coding Challenge (Software Engineer - Answer Bot)
 
 #### By Ross Lillis
@@ -37,7 +30,6 @@ This is a command line application built as part of the Zendesk Coding Challenge
   - `chalk` for menu colors and grid styling
   - `cli-table3` to style the results tables
   - `esm` to enable the ES6 standard
-  - testing???
 
 ---
 
