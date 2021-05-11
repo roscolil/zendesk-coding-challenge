@@ -12,7 +12,7 @@ This is a command line application built as part of the Zendesk Coding Challenge
 
 ##### At a glance
 
-<img src="https://github.com/roscolil/zendesk-coding-challenge/blob/master/assets/app.jpg" width="800" height="400">
+<img src="https://github.com/roscolil/zendesk-coding-challenge/blob/master/assets/app.jpg" target="_blank" width="800" height="400">
 
 ## Environment & Technologies Used
 
