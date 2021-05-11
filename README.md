@@ -1,10 +1,7 @@
 <!-- TODO
-          do a app user flow
           format each file
-          Test how to show properties with arrays..
-          refactor
-          add tests
-          validation messages (pre-load/cache keys/values)
+          add tests or remove module note
+          validation messages (pre-load/cache keys/values) for no results and number of results
           fuzzy search
 -->
 
@@ -18,7 +15,7 @@
 
 ## Description
 
-This is a command line application built as part of the Zendesk Coding Challenge following the overview and selection criteria provided
+This is a command line application built as part of the Zendesk Coding Challenge following the overview and selection criteria provided. It uses non-case sensitive, full value matching for a narrower search but partial search strings will also work.
 
 ##### At a glance
 
@@ -84,12 +81,11 @@ See a demo [here](https://vimeo.com/547309000)
 - Better UX/UI
 - Build as a web app
 - Validate each of the search criteria against chosen file
-- Capacity to view fields at any point in the program
-- Fuzzy search
+- Option to view fields at any point in the program
+- Type checking with Typescript
 - Paginate/Scroll multiple results or 'Press any key to see more..'
 - Broarder search across all files
-- Display number of results
 
 ---
 
-Hey, if you want to see a picture of me gazing thoughtfully into the distance, go to my [portfolio site](http://www.rosslillis.com/). Please note that the sites/apps here are not commercial projects, but make up personal project work that I submitted as part of the Bootcamp at General Assembly.
+Hey, if you want to see a picture of me gazing thoughtfully into the distance, go to my [portfolio site](http://www.rosslillis.com/). \*The sites/apps here are not commercial projects, but make up personal project work that I submitted as part of the Bootcamp at General Assembly.
