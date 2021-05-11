@@ -88,7 +88,7 @@ const readFileExtractData = (file) => {
     const objArr = JSON.parse(data)
     objArr.filter(obj => {
       for (const [key, value] of Object.entries(obj)) {
-        if (key.includes(fieldName) && value.toString().toLowerCase().includes(searchQuery)) {
+        if (key.toString().toLowerCase() == fieldName && value.toString().toLowerCase() == searchQuery) {
           for (const [key, value] of Object.entries(obj)) {
             if (Array.isArray(value)) {     // If any of object keys is an array, loop through and display in table
               value.forEach((e) => {
