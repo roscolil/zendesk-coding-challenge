@@ -17,6 +17,7 @@ let fileName
 let fieldName
 let searchQuery
 let tableData
+let noOfResults = 0
 
 // ------------------- Main search function ------------------- //
 export async function search() {
@@ -35,9 +36,9 @@ export async function search() {
 
 // Store user inputs and validate entry before pushing to arrray
 const storeSelectedFile = (input) => {
-  const str = input.toLowerCase()
+  const str = input
   if (str == 'u' || str == 't' || str == 'o') {
-    fileName = str.trim()
+    fileName = str.trim().toString().toLowerCase()
   } else {
     console.log(chalk`\n{red.bold Plese enter the correct selection..}\n`);
     search()
@@ -45,23 +46,22 @@ const storeSelectedFile = (input) => {
 }
 
 const storeSelectedField = (field) => {
-  const str = field.toLowerCase()
-  // Load fields from chosen file to validate? 'This field does not exist in the the file you've selected. You may want to run zendesk fields to confirm and try again' Or, show fields when file selected
+  const str = field
   if (str == '') {
     console.log(chalk`{red.bold Please enter a field name}`);
     search()
   } else {
-    fieldName = str.trim()
+    fieldName = str.trim().toString().toLowerCase()
   }
 }
 
 const storeSearchQuery = (string) => {
-  const str = string.toLowerCase()
+  const str = string
   if (str == '') {
     console.log(chalk`{red.bold Please enter a search query}`)
     search()
   } else {
-    searchQuery = str.trim()
+    searchQuery = str.trim().toString().toLowerCase()
   }
 }
 
@@ -88,7 +88,7 @@ const readFileExtractData = (file) => {
     const objArr = JSON.parse(data)
     objArr.filter(obj => {
       for (const [key, value] of Object.entries(obj)) {
-        if (key == fieldName && value == searchQuery) {
+        if (key.includes(fieldName) && value.toString().toLowerCase().includes(searchQuery)) {
           for (const [key, value] of Object.entries(obj)) {
             if (Array.isArray(value)) {     // If any of object keys is an array, loop through and display in table
               value.forEach((e) => {
@@ -97,22 +97,20 @@ const readFileExtractData = (file) => {
             }
           }
           tableData = obj
-          if (Object.entries(tableData).length >= 1) {
-            displayData(tableData)
-          } else {
-            console.log('There are no results for this search...');
-            quitMessage()
-          }
+          displayData(tableData)
+          noOfResults++
         }
       }
     })
+    console.log(chalk`{blue.bold There are ${noOfResults} search results}\n`);
     quitMessage()
+    noOfResults = 0
   })
 }
 
 const resultsHeader = (field, query, file) => {
   console.log(chalk`{blue.bold -----------------------------------------}`)
-  console.log(chalk`{blue.bold Search results for ${field}: '${query}' in the ${file} file:\n}`)
+  console.log(chalk`{blue.bold Search results for '${field}: ${query}' in the ${file} file:\n}`)
 }
 
 const displayData = (result) => {
@@ -122,7 +120,7 @@ const displayData = (result) => {
     style: { 'padding': 0 },
     wordWrap: true
   })
-  // If multiple results, press key to continue
+
   for (const properties of Object.entries(result)) {
     table.push(
       properties
