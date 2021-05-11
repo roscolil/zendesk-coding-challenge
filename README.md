@@ -8,7 +8,7 @@
 
 ## Description
 
-This is a command line application built as part of the Zendesk Coding Challenge following the overview and selection criteria provided. It uses non-case sensitive, full value matching for a narrower search but partial search strings will also work.
+This is a command line application built as part of the Zendesk Coding Challenge following the overview and selection criteria provided. It uses non-case sensitive, full value matching
 
 ##### At a glance
 
@@ -42,6 +42,7 @@ See a demo [here](https://vimeo.com/547309000)
 ## Assumptions & Tradeoffs
 
 - Tried to use built-in node system modules where possible i.e. `fs`, `readline`, `path`
+- Assumed a full value match (non-case sensitive). Could use `.includes()` when checking `fileName, searchQuery` for a fuzzy(ier) search
 - Use the program entry point to load the cli via a terminal command (`$ zendesk`)
 - Program exits after initial menu command. You then have the option of quitting or continuing.
 - Note: Some documents have suggested that `cli-table3` is not supported on all terminals in which there'll be no grid or colors. I noticed this in iTerm configured with zsh. The data is still correct just without some of the styling
