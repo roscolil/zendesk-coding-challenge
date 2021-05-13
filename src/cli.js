@@ -33,7 +33,7 @@ export async function cli(argsArray) {
 
     case 'fields':
       viewFields(args);
-      quitMessage()
+      quitMessage()  // TODO showing before fields
       break;
 
     default:
@@ -41,3 +41,5 @@ export async function cli(argsArray) {
       break;
   }
 }
+
+export default cli

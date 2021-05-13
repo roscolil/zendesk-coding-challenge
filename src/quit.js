@@ -29,3 +29,5 @@ const closeApp = () => {
   console.clear()
   rl.close()
 }
+
+module.exports = { quitMessage }

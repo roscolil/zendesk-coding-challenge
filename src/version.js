@@ -4,3 +4,5 @@ export async function version() {
   console.log(packageJSON.description);
   console.log(packageJSON.author);
 }
+
+export default version

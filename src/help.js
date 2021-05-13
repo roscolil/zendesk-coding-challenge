@@ -31,3 +31,5 @@ export async function help(args) {
   console.log(menus[subCmd] || menus.main)
   rl.close()
 }
+
+module.exports = { help, menus }

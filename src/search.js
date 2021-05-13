@@ -66,16 +66,16 @@ const storeSearchQuery = (string) => {
 }
 
 const searchData = () => {
-  if (fileName == 'u') { // Only read file selected
+  if (fileName === 'u') { // Only read file selected
     fileName = 'Users'
     resultsHeader(fieldName, searchQuery, fileName)
     readFileExtractData(userData)
   }
-  else if (fileName == 't') {
+  else if (fileName === 't') {
     fileName = 'Tickets'
     resultsHeader(fieldName, searchQuery, fileName)
     readFileExtractData(ticketData)
-  } else if (fileName == 'o') {
+  } else if (fileName === 'o') {
     fileName = 'Organizations'
     resultsHeader(fieldName, searchQuery, fileName)
     readFileExtractData(organizationData)
@@ -127,4 +127,11 @@ const displayData = (result) => {
     )
   }
   console.log(table.toString());
+}
+
+module.exports = {
+  search,
+  storeSelectedFile,
+  storeSelectedField,
+  storeSearchQuery
 }
