@@ -30,6 +30,8 @@ This is a command line application built as part of the Zendesk Coding Challenge
   - `chalk` for menu colors and grid styling
   - `cli-table3` to style the results tables
   - `esm` to enable the ES6 standard
+  - `mocha` as primary testing framework
+  - `chai` assertion library
 
 ---
 
@@ -57,14 +59,14 @@ See a demo [here](https://vimeo.com/547309000)
 2. [Optional] Run `$ npm link` to create a symlink in the global folder that links to this package
 3. Run `$ npm install` to install dependencies
 4. Type `$ zendesk` to start application
+5. Run `$ npm test` to start mocha
 
 - **In application:**
 
   - Enter `$ zendesk fields` to view a list of searchable fields
   - Enter `$ zendesk search` to search JSON data
   - Enter `$ zendesk version` or `$ zendesk -v` to show app version
-  - Entering `$ zendesk help` or `$ zendesk -h` is the same as the starting command
-
+  - Entering `$ zendesk help` or `$ zendesk -h` is the same as the starting command (See point 4 above)
   - Use `CTRL-C` anytime or follow prompts to quit application
 
 ---
