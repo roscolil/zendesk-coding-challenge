@@ -7,7 +7,7 @@
     "zendesk": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "By Ross Lillis for Zendesk",
@@ -17,5 +17,9 @@
     "cli-table3": "^0.6.0",
     "esm": "^3.2.25",
     "minimist": "^1.2.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0"
   }
 }
